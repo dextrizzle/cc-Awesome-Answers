@@ -28,4 +28,7 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
     # render json: params
   end
+  def index
+    @question = Question.last(50)
+  end
 end
