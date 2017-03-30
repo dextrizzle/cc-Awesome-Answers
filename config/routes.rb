@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   #predefined path helper. Remember that the `as:` option defines a path/url
   #helper which only generates a URL and isn't concerned about the VERB
   get('/questions', { to:'questions#index'})
+  patch('/questions/:id', {to: 'questions#update'})
+  get('/questions/:id/edit', {to: 'questions#edit', as: 'edit_question'})
   root 'welcome#index'
 
   #you can also write it as:

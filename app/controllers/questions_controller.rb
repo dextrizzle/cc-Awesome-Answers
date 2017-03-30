@@ -31,4 +31,16 @@ class QuestionsController < ApplicationController
   def index
     @question = Question.last(50)
   end
+  def edit
+    @question = Question.find params[:id]
+  end
+  def update
+    @question = Question.find params[:id]
+    question_params = params.require(:question).permit([:title, :body])
+    if @question.update(question_params)
+      redirect_to question_path(@question)
+    else
+      render :edit
+    end
+  end
 end
