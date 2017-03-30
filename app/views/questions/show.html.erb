@@ -1,4 +1,7 @@
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
 
+<%#rails enables us to make links and non-GET requests by setting the `method`
+    attribute for `link_to`. Rails uses Javascript to accomplish that. %>
 <h3><%= link_to 'edit', edit_question_path(@question)%></h3>
+<h3><%= link_to 'delete', question_path(@question), method: :delete, data: {confirm:'Are you sure?'} %></h3>
