@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AwesomeAnswers</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <!-- <a href="/"> Home </a>-->
+    <!-- link_to is a built in Rails helper that generates an `<a>`tag. the
+         first arg is the anchor text and the second arg is the URL or path.
+         It's best to use Rails generated path/url helpers -->
+    <%= link_to 'Home', root_path %>
+    |
+    <%= link_to 'About Us', about_path %>
+    <hr>
+
+    <%= yield %>
+  </body>
+</html>
