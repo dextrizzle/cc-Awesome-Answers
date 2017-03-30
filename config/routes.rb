@@ -12,7 +12,14 @@ Rails.application.routes.draw do
   post('/contact',{to:'contact#create',as:'contact_submit'})
   get('/questions/new',{to:'questions#new', as:'new_question'})
   post('/questions', {to:'questions#create', as:'questions'})
+  #the order of URLs matters because rails gives higher priority to routes that
+  #appear first
   get('/questions/:id', {to:'questions#show', as:'question'})
+  #we don't need to put as option in here because we used the same url for the
+  #create action. Indeed rails will throw an error if you try to reuse a
+  #predefined path helper. Remember that the `as:` option defines a path/url
+  #helper which only generates a URL and isn't concerned about the VERB
+  get('/questions', { to:'questions#index'})
   root 'welcome#index'
 
   #you can also write it as:
