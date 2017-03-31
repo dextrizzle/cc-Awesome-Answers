@@ -10,5 +10,12 @@
 
 <%# render helps you insert a partial. Rails expects in here that you defined
     a partial within the same folder of this file (new.html.erb) called
-    _form.html.erb %>
+    _form.html.erb . Note that partials will have access to instance variables
+    so there is no need to pass them explicitly. If you want to pass a local
+    variable, then you'll need to do so explicitly... as in
+      render 'form, my_var: 'abc'
+    Also, if the partial is in another folder (such as contact) then you will
+    have to put the full path for the partial as in:
+      render '/contact/form'
+    %>
 <%= render 'form' %>

@@ -5,14 +5,5 @@
     will submit a PATCH request instead of POST using a hidden_field technique
     and the URL for the form will be in this case the `update` action URL. in
     our case this is question_path(@question) %>
-<%= form_for @question do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <%= f.submit %>
-<% end %>
+
+<%= render 'form' %>
