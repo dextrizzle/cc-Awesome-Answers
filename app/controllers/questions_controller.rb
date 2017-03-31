@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
+  before_action :find_question, only: [:show, :edit, :update, :destroy]
   def new
     #we instantiate a new `question` object because it will help us in generating
-    #the form in `views/new.html.erb`. We have to ake it an instance variable
+    #the form in `views/new.html.erb`. We have to make it an instance variable
     #so we can access it in the view file
     @question = Question.new
   end
@@ -24,16 +25,17 @@ class QuestionsController < ApplicationController
       # render plain: "errors: #{question.errors.full_messages.join(', ')}"
     end
   end
+
   def show
-    @question = Question.find params[:id]
-    # render json: params
   end
+
   def index
     @question = Question.last(50)
   end
+
   def edit
-    @question = Question.find params[:id]
   end
+
   def update
     @question = Question.find params[:id]
     question_params = params.require(:question).permit([:title, :body])
@@ -44,9 +46,19 @@ class QuestionsController < ApplicationController
     end
   end
   def destroy
-    question = Question.find params[:id]
     question.destroy
     redirect_to questions_path
 
   end
+  def find_question
+    @question = Question.find params[:id]
+  end
+
+  def question_params
+    # the line below is what's called "Strong Parameters" feautre that was added
+    # to Rails starting with version 4 to help developer be more explicit about
+    # the parameters that they want to allow the user to submit
+    params.require(:question).permit([:title, :body])
+  end
+
 end
