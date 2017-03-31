@@ -19,8 +19,14 @@ class QuestionsController < ApplicationController
     @question = Question.new question_params
     if @question.save
       # render plain: 'question created successfully'
+
+      # rails gives us access to `flash` object which looks like a Hash. flash
+      # utilizes cookies to store a bit of information that we can access in the
+      # next request. Flash will automatically be deleted when it's displayed.
+      flash[:notice] = "question created!"
       redirect_to question_path(@question)
     else
+      flash.now[:alert] = 'Please fix errors below'
       render :new
       # render plain: "errors: #{question.errors.full_messages.join(', ')}"
     end

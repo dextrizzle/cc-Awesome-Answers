@@ -19,6 +19,13 @@
     |
     <%= link_to 'All Questions', questions_path %>
     <hr>
+      <% if flash[:notice] %>
+        <div class="flash-success"><%= flash[:notice] %></div>
+        <hr>
+      <% elsif flash[:alert] %>
+        <div class="flash-alert"><%= flash[:alert] %></div>
+        <hr>
+      <% end %>
 
     <%= yield %>
   </body>
