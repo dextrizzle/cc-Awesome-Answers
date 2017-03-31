@@ -8,16 +8,7 @@
 
     %>
 
-<%= @question.errors.full_messages.join(', ') %>
-
-<%= form_for @question do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <%= f.submit %>
-<% end %>
+<%# render helps you insert a partial. Rails expects in here that you defined
+    a partial within the same folder of this file (new.html.erb) called
+    _form.html.erb %>
+<%= render 'form' %>
