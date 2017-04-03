@@ -3,6 +3,29 @@
 #all the functionalities we're going to be using in our question model come
 #from `activerecord::base` which leverages ruby'ys meta programming features
 class Question < ApplicationRecord
+  has_many :answers
+
+  # has_many :answers adds the following instance methods
+  # to this model, Question:
+  # answers
+  # answers<<(object, ...)
+  # answers.delete(object, ...)
+  # answers.destroy(object, ...)
+  # answers=(objects)
+  # answers
+  # answers=(ids)
+  # answers.clear
+  # answers.empty?
+  # answers.size
+  # answers.find(...)
+  # answers.where(...)
+  # answers.exists?(...)
+  # answers.build(attributes = {}, ...)
+  # answers.create(attributes = {})
+  # answers.create!(attributes = {})
+  # http://guides.rubyonrails.org/association_basics.html#has-many-association-reference
+
+
   # validates(:title, { presence: true, uniqueness: true })
   validates(:title, { presence: { message: 'must be present!' },
                       uniqueness: true,
